@@ -14,15 +14,14 @@ html
         h1
           a(href='./') Julia Colavita
         nav.clearfix
-          a.portfolio.selected(href='#!/portfolio') Portfolio
-          a(href='bio.pdf')
+          a(href='bio.pdf', target='_blank')
             | BIO
             span.pdf [PDF]
-          a(href='cv.pdf')
+          a(href='cv.pdf', target='_blank')
             | CV
             span.pdf [PDF]
           a(href='mailto:juliacolavita@gmail.com') juliacolavita@gmail.com
-      #main(role='main')
+      #main(role='main', target='_blank')
         #portfolio
           #portfolio_nav_container
             nav.clearfix
@@ -34,7 +33,7 @@ html
               .portfolio_page
                 ul.artworks.clearfix
                   for artwork in collection
-                    li.landscape
+                    li
                       img(src=artwork.images[0].image_url.replace(':version', 'large'), data-large_src=artwork.images[0].image_url.replace(':version', 'larger'))
                       .caption
                         = artwork.title

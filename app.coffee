@@ -27,18 +27,19 @@ init = ->
         js:
           all: ['/assets/main.coffee']
         css:
-          all: ['/assets/style_embed.styl']
+          all: ['/assets/main_embed.styl']
   nap.package()
   js = fs.readFileSync('./public/assets/all.js')
   css = fs.readFileSync('./public/assets/all.css')
-  html = jade.compile(fs.readFileSync './assets/template.jade')
+  html = jade.compile(fs.readFileSync './assets/main.jade')
     collections: collections
     js: js
     css: css
   
 # Start a server that just serves up static assets and the compiled html
+init()
 app = connect().use(nap.middleware).use(connect.static("public")).use((req, res) ->
-  init()
   res.writeHead 200, "Content-Type": "text/HTML"
   res.end html
 ).listen(3000)
+console.log "Listening on 3000"
