@@ -15,7 +15,7 @@ init = ->
   artworks = JSON.parse fs.readFileSync('./assets/artworks.json')
   collections = {}
   for artwork in artworks
-    name = artwork.series || 'Artworks'
+    name = artwork.category || 'Artworks'
     collections[name] ?= []
     collections[name].push artwork
   
@@ -37,9 +37,9 @@ init = ->
     css: css
   
 # Start a server that just serves up static assets and the compiled html
-init()
 app = connect().use(nap.middleware).use(connect.static("public")).use((req, res) ->
   res.writeHead 200, "Content-Type": "text/HTML"
+  init()
   res.end html
 ).listen(3000)
 console.log "Listening on 3000"

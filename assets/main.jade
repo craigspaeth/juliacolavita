@@ -26,10 +26,9 @@ html
           #portfolio_nav_container
             nav.clearfix
               for collection, name in collections
-                a(href='collection')
-                  h2= name
-          for collection, name in collections
-            #portfolio_page_container.clearfix
+                a(href='collection')= name
+          #portfolio_page_container.clearfix
+            for collection, name in collections
               .portfolio_page
                 ul.artworks.clearfix
                   for artwork in collection

@@ -1,17 +1,21 @@
 {
-    "name": "juliacolavita"
-  , "version": "0.0.1"
-  , "private": true
-  , "engines": {
-        "node": "0.6.x"
-      , "npm":  "1.1.x"
-    }
-  , "dependencies": {
-      "jade": "*"
-    , "stylus": "*"
-    , "coffee-script": "*"
-    , "nap": "*"
-    , "underscore": "*"
-    , "connect": "*"
+  "name": "juliacolavita",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "0.6.x",
+    "npm": "1.1.x"
+  },
+  "dependencies": {
+    "jade": "*",
+    "stylus": "*",
+    "coffee-script": "*",
+    "nap": "*",
+    "underscore": "*",
+    "connect": "*"
+  },
+  "subdomain": "juliacolavita",
+  "scripts": {
+    "start": "coffee app.coffee"
   }
 }
