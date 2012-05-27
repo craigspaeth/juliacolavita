@@ -15,7 +15,7 @@ init = ->
   artworks = JSON.parse fs.readFileSync('./assets/artworks.json')
   collections = {}
   for artwork in artworks
-    name = artwork.category || 'Artworks'
+    name = artwork.category || 'No category'
     collections[name] ?= []
     collections[name].push artwork
   
