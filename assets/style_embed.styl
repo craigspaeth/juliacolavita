@@ -1,0 +1,196 @@
+@import nib
+global-reset()
+
+// Typography
+
+@font-face
+ font-family BigNoodle
+ src url("big_noodle_titling.ttf")
+
+// Main body
+body
+  font-family Lucida Grande, Lucida Sans Unicode, sans-serif
+  font-size 13px
+  color black
+  h1, h2
+    font-family 'BigNoodle'
+  h1
+    font-size 60px
+    letter-spacing 10px
+    margin 0
+  h1 ahover
+    text-decoration none
+  h2
+    font-size 24px
+    letter-spacing 1px
+  ul
+    padding 0
+  a
+    color black
+    text-decoration none
+
+// Header
+header
+  text-align center
+  position relative
+  nav
+    margin auto
+    display inline-block
+    border-top 2px solid black
+    border-bottom 2px solid black
+    padding 10px 15px
+    margin-left -10px
+    background white
+    a
+      float left
+      display block
+      margin-right 23px
+      color #999
+      &:last-child
+        margin-right 0px
+      &:visited:hover, &:hover
+        text-decoration none
+        color #333
+      &:visited color #999
+      &.selected
+        color black
+    .pdf
+      font-size 9px
+      color #999
+      text-transform uppercase
+
+// Portfolio page
+
+#portfolio_nav_container
+  text-align center
+  margin 20px 0
+
+  #portfolio nav
+    display inline-block
+    .portfolio_page
+      float left
+      width 800px
+      margin-right 100px
+    a
+      float left
+      margin-right 20px
+      &:hover
+        text-decoration none
+      &.unselected
+        color #CCC
+        transition color 0.5s
+      &.unselected:hover
+        color #555
+
+#portfolio_page_container
+  width 1200px
+  position relative
+
+// Artworks
+
+ul.artworks 
+  li
+    list-style none
+    float left
+    height 430px
+    position relative
+  img
+    display block
+    max-width 100%
+    max-height 100%
+    position absolute
+    bottom 40px
+    cursor -moz-zoom-in
+    cursor -webkit-zoom-in
+  .caption
+    display block
+    width 100%
+    overflow hidden
+    font-size 11px
+    margin 15px 0
+    padding 0px
+    position absolute
+    bottom 0
+    line-height 16px
+  li:hover .caption
+    background-color rgba(255,255,255,0.7)
+
+// Lightbox
+
+#lightbox
+  width 100%
+  height 100%
+  position fixed
+  background rgba(255,255,255,0.95)
+  top 0
+  left 0
+  display none
+  text-align center
+  padding 50px 20px 170px 20px
+  box-sizing border-box
+  .img_container
+    display inline-block
+    position relative
+    z-index 10
+  .caption
+    bottom 0
+    right 0
+    position absolute
+    padding 10px 0
+    color #333
+    text-align right
+    line-height 18px
+  img
+    max-width 100%
+    max-height 100%
+    margin auto
+    box-shadow 0px 3px 5px rgba(0,0,0,0.3)
+    display block
+
+#close_lightbox
+  background white
+  border 0
+  border-radius 2px
+  position absolute
+  right 10px
+  top 8px
+  color #CCC
+  font-size 20px
+  transition color 0.5s
+  cursor pointer
+  &:hover
+    color black
+
+// Adjust layouts depending on 800 or 1200 class
+
+// Small
+
+#container
+  opacity 0
+  width 800px
+  margin auto
+  overflow hidden
+
+#container.small
+  ul.artworks li
+    width 186px
+    margin-right 18px
+    &:nth-child(4n)
+      margin-right 0px
+
+// Wide
+
+#container.wide
+  width 1200px
+  margin auto
+  ul.artworks li
+    width 185px
+    margin 0 18px 60px 0
+    &:nth-child(6n)
+      margin-right 0px
+
+#container.wide ul.artworks li.landscape img
+  width 100%
+
+#container.wide #portfolio .portfolio_page
+  width 1200px
