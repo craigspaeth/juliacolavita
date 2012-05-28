@@ -32,16 +32,17 @@ html
               .portfolio_page
                 ul.artworks.clearfix
                   for artwork in collection
-                    li
-                      img(src=artwork.images[0].image_url.replace(':version', 'large'), data-large_src=artwork.images[0].image_url.replace(':version', 'larger'))
-                      .caption
-                        = artwork.title
-                        | , 
-                        = artwork.date
-                        br
-                        = artwork.medium
-                        br
-                        = artwork.dimensions[artwork.metric]
+                    if artwork.images.length > 0 && artwork.images[0].image_url
+                      li
+                        img(src=artwork.images[0].image_url.replace(':version', 'large'), data-large_src=artwork.images[0].image_url.replace(':version', 'larger'))
+                        .caption
+                          = artwork.title
+                          | , 
+                          = artwork.date
+                          br
+                          = artwork.medium
+                          br
+                          = artwork.dimensions[artwork.metric]
           #lightbox
             .img_container
               img(src='large_img')
