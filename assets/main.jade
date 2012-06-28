@@ -4,8 +4,8 @@ html
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
     title Julia Colavita
-    meta(name='description', content='')
-    meta(name='author', content='')
+    meta(name='description', content='Julia Colavita (b. 1983) is a painter and sculptor based in Brooklyn, New York.')
+    meta(name='author', content='Julia Colavita')
     meta(name='viewport', content='width=device-width,initial-scale=1')
     style= css
   body
@@ -27,6 +27,7 @@ html
             nav.clearfix
               for collection, name in collections
                 a(href='collection')= name
+              a(href='para-projections') Para-Projections
           #portfolio_page_container.clearfix
             for collection, name in collections
               .portfolio_page
@@ -43,6 +44,9 @@ html
                           = artwork.medium
                           br
                           = artwork.dimensions[artwork.metric]
+            .portfolio_page
+              .para-projections
+                iframe(src='http://player.vimeo.com/video/44775766', color='ffffff', width='800', height='448', frameborder='0', webkitallowfullscreen='webkitAllowFullScreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowFullScreen')
           #lightbox
             .img_container
               img(src='large_img')
@@ -53,4 +57,5 @@ html
     #scripts
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
       script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js')
+      script(src='http://backbonejs.org/backbone-min.js')
       script!= js
