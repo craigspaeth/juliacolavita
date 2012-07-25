@@ -29,9 +29,9 @@ init = ->
           all: ['/assets/main.coffee']
         css:
           all: ['/assets/main_embed.styl']
-  nap.package()
-  js = fs.readFileSync('./public/assets/all.js')
-  css = fs.readFileSync('./public/assets/all.css')
+  for file in fs.readdirSync('./public/assets/')
+    js = fs.readFileSync('./public/assets/' + file) if file.match /\.js$/
+    css = fs.readFileSync('./public/assets/' + file) if file.match /\.css$/
   html = jade.compile(fs.readFileSync './assets/main.jade')
     collections: collections
     js: js
@@ -42,5 +42,5 @@ init()
 app = connect().use(nap.middleware).use(connect.static("public")).use((req, res) ->
   res.writeHead 200, "Content-Type": "text/HTML"
   res.end html
-).listen(3000)
+).listen(4000)
 console.log "Listening on 3000"
