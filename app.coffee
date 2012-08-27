@@ -29,6 +29,7 @@ init = ->
           all: ['/assets/main.coffee']
         css:
           all: ['/assets/main_embed.styl']
+  nap.package()
   for file in fs.readdirSync('./public/assets/')
     js = fs.readFileSync('./public/assets/' + file) if file.match /\.js$/
     css = fs.readFileSync('./public/assets/' + file) if file.match /\.css$/
@@ -43,4 +44,4 @@ app = connect().use(nap.middleware).use(connect.static("public")).use((req, res)
   res.writeHead 200, "Content-Type": "text/HTML"
   res.end html
 ).listen(4000)
-console.log "Listening on 3000"
+console.log "Listening on 4000"
