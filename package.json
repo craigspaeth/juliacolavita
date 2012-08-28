@@ -5,10 +5,10 @@
     "juliacolavita.com",
     "www.juliacolavita.com"
   ],
-  "version": "0.0.1-16",
+  "version": "0.0.1-17",
   "private": true,
   "engines": {
-    "node": "0.6.x",
+    "node": "0.8.x",
     "npm": "1.1.x"
   },
   "dependencies": {

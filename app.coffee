@@ -40,8 +40,10 @@ init = ->
   
 # Start a server that just serves up static assets and the compiled html
 init()
+console.log process.env.NODE_ENV
+port = if process.env.NODE_ENV is 'production' then 80 else 4000
 app = connect().use(nap.middleware).use(connect.static("public")).use((req, res) ->
   res.writeHead 200, "Content-Type": "text/HTML"
   res.end html
-).listen(80)
-console.log "Listening on 80"
+).listen(port)
+console.log "Listening on #{port}"
