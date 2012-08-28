@@ -46,4 +46,4 @@ app = connect().use(nap.middleware).use(connect.static("public")).use((req, res)
   res.writeHead 200, "Content-Type": "text/HTML"
   res.end html
 ).listen(port)
-console.log "Listening on #{port}"
+console.log "NODE_ENV is #{process.env.NODE_ENV}, listening on #{port}"
