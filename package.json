@@ -5,7 +5,7 @@
     "juliacolavita.com",
     "www.juliacolavita.com"
   ],
-  "version": "0.0.1-10",
+  "version": "0.0.1-11",
   "private": true,
   "engines": {
     "node": "0.6.x",
