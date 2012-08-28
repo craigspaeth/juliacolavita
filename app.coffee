@@ -43,5 +43,5 @@ init()
 app = connect().use(nap.middleware).use(connect.static("public")).use((req, res) ->
   res.writeHead 200, "Content-Type": "text/HTML"
   res.end html
-).listen(4000)
+).listen(process.env.PORT || 4000)
 console.log "Listening on 4000"
