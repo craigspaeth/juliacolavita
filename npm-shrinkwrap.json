@@ -1,6 +1,6 @@
 {
   "name": "juliacolavita.com",
-  "version": "0.0.1-21",
+  "version": "0.0.1-23",
   "dependencies": {
     "jade": {
       "version": "0.27.2",
