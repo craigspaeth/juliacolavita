@@ -14,6 +14,7 @@
   "dependencies": {
     "jade": "*",
     "stylus": "*",
+    "nib": "*",
     "coffee-script": "*",
     "nap": "*",
     "underscore": "*",
