@@ -2,7 +2,6 @@
 global-reset()
 
 // Typography
-
 @font-face
  font-family BigNoodle
  src url("big_noodle_titling.ttf")
@@ -65,7 +64,6 @@ header
       padding-left 5px
 
 // Portfolio page
-
 #portfolio_nav_container
   nav
     text-align center
@@ -98,7 +96,6 @@ header
     margin-right 100px
 
 // Artworks
-
 ul.artworks 
   li
     list-style none
@@ -108,7 +105,7 @@ ul.artworks
   img
     display block
     max-width 100%
-    max-height 100%
+    max-height 380px
     position absolute
     bottom 40px
     cursor -moz-zoom-in
@@ -127,7 +124,6 @@ ul.artworks
     background-color rgba(255,255,255,0.9)
 
 // Lightbox
-
 #lightbox
   width 100%
   height 100%
@@ -174,8 +170,16 @@ ul.artworks
 
 // Adjust layouts depending on 800 or 1200 class
 
-// Small
+// Landscape
+.landscape_placeholder
+  position absolute !important
+  z-index -1
+#container.wide .landscape
+  width 388px !important
+#container.small .landscape
+  width 390px !important
 
+// Small
 #container
   opacity 0
   width 800px
@@ -190,7 +194,6 @@ ul.artworks
       margin-right 0px
 
 // Wide
-
 #container.wide
   width 1200px
   margin auto
@@ -199,9 +202,6 @@ ul.artworks
     margin 0 18px 60px 0
     &:nth-child(6n)
       margin-right 0px
-
-#container.wide ul.artworks li.landscape img
-  width 100%
 
 #container.wide #portfolio .portfolio_page
   width 1200px

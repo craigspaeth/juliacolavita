@@ -34,8 +34,12 @@ html
                 ul.artworks.clearfix
                   for artwork in collection
                     if artwork.images.length > 0 && artwork.images[0].image_url
-                      li
-                        img(src=artwork.images[0].image_url.replace(':version', 'large'), data-large_src=artwork.images[0].image_url.replace(':version', 'larger'))
+                      landscape = artwork.images[0].aspect_ratio > 1
+                      if landscape
+                        li.landscape_placeholder
+                      li( class=landscape ? 'landscape' : '' )
+                        img(src=artwork.images[0].image_url.replace(':version', 'large'), 
+                            data-large_src=artwork.images[0].image_url.replace(':version', 'larger'))
                         .caption
                           = artwork.title
                           | , 
@@ -57,5 +61,4 @@ html
     #scripts
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
       script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js')
-      script(src='http://backbonejs.org/backbone-min.js')
       script!= js

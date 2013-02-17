@@ -39,18 +39,6 @@ $ ->
     $("#lightbox").fadeOut()
     $("html").css "overflow-y": "scroll"
   
-  # Switch between portfolio and statement
-  $("a.statement").click ->
-    $("header nav a").removeClass "selected"
-    $(this).addClass "selected"
-    $("#portfolio").fadeOut ->
-      $("#artist_statement").fadeIn()
-  $("a.portfolio").click ->
-    $("header nav a").removeClass "selected"
-    $(this).addClass "selected"
-    $("#artist_statement").fadeOut ->
-      $("#portfolio").fadeIn()
-  
   # Set layout depending on screen size, increments of 800px to 1200px
   setLayout = ->
     if $(window).width() >= 1200
