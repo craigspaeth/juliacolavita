@@ -1,5 +1,4 @@
 (function() {
-
   $(function() {
     var index, layoutWidth, setLayout;
     layoutWidth = 1200;
