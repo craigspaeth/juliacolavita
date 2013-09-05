@@ -7,7 +7,7 @@ html
     meta(name='description', content='Julia Colavita (b. 1983) is a painter and sculptor based in Brooklyn, New York.')
     meta(name='author', content='Julia Colavita')
     meta(name='viewport', content='width=device-width,initial-scale=1')
-    style= css
+    != nap.css('all')
   body
     #container
       header
@@ -61,4 +61,4 @@ html
     #scripts
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
       script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js')
-      script!= js
+      != nap.js('all')
