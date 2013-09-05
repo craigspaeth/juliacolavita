@@ -12,7 +12,7 @@
         },
         "mkdirp": {
           "version": "0.3.5",
-          "from": "mkdirp@>= 0.3.4"
+          "from": "mkdirp@0.3.x"
         },
         "transformers": {
           "version": "2.1.0",
@@ -106,7 +106,7 @@
           "dependencies": {
             "uglify-js": {
               "version": "2.4.0",
-              "from": "uglify-js@~2.4.0",
+              "from": "uglify-js@~2",
               "dependencies": {
                 "async": {
                   "version": "0.2.9",
@@ -376,7 +376,7 @@
         },
         "mkdirp": {
           "version": "0.3.5",
-          "from": "mkdirp@0.3.5"
+          "from": "mkdirp@0.3.x"
         },
         "cookie": {
           "version": "0.1.0",
