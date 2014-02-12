@@ -70,7 +70,10 @@
     $("#container").animate({
       opacity: 1
     });
-    return $("#portfolio").hide().delay(800).fadeIn(2000, "easeOutExpo");
+    $("#portfolio").hide().delay(800).fadeIn(2000, "easeOutExpo");
+    return $('img').error(function() {
+      return $(this).parent().hide();
+    });
   });
 
 }).call(this);

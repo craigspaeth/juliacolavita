@@ -1,3 +1,23 @@
+mixin portfolio-page(collection)
+  .portfolio_page
+    ul.artworks.clearfix
+      for artwork in collection.reverse()
+        if artwork.images.length > 0 && artwork.images[0].image_url
+          landscape = artwork.images[0].aspect_ratio > 1.5
+          if landscape
+            li.landscape_placeholder
+          li( class=landscape ? 'landscape' : '' )
+            img(src=artwork.images[0].image_url.replace(':version', 'large'),
+                data-large_src=artwork.images[0].image_url.replace(':version', 'larger'))
+            .caption
+              = artwork.title.trim()
+              | ,&nbsp;
+              = artwork.date
+              br
+              = artwork.medium
+              br
+              = artwork.dimensions[artwork.metric]
+
 !!! 5
 html
   head
@@ -25,29 +45,18 @@ html
         #portfolio
           #portfolio_nav_container
             nav.clearfix
-              for collection, name in collections
-                a(href='collection')= name
+              a( href='#' ) Sculpture
+              a( href='#' ) Slide Projections
+              a( href='#' ) Painting
+              a( href='#' ) Works on Paper
+              a( href='#' ) Mixed Media
               a(href='para-projections') Para-Projections
           #portfolio_page_container.clearfix
-            for collection, name in collections
-              .portfolio_page
-                ul.artworks.clearfix
-                  for artwork in collection
-                    if artwork.images.length > 0 && artwork.images[0].image_url
-                      landscape = artwork.images[0].aspect_ratio > 1.5
-                      if landscape
-                        li.landscape_placeholder
-                      li( class=landscape ? 'landscape' : '' )
-                        img(src=artwork.images[0].image_url.replace(':version', 'large'), 
-                            data-large_src=artwork.images[0].image_url.replace(':version', 'larger'))
-                        .caption
-                          = artwork.title
-                          | , 
-                          = artwork.date
-                          br
-                          = artwork.medium
-                          br
-                          = artwork.dimensions[artwork.metric]
+            mixin portfolio-page(collections['Sculpture'])
+            mixin portfolio-page(collections['Installation'])
+            mixin portfolio-page(collections['Painting'])
+            mixin portfolio-page(collections['Works on Paper'])
+            mixin portfolio-page(collections['Mixed Media'])
             .portfolio_page
               .para-projections
                 iframe(src='http://player.vimeo.com/video/44775766', color='ffffff', width='800', height='448', frameborder='0', webkitallowfullscreen='webkitAllowFullScreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowFullScreen')
@@ -57,7 +66,7 @@ html
               .caption
             button#close_lightbox X
       footer
-    
+
     #scripts
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
       script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js')
