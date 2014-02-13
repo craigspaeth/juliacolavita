@@ -248,7 +248,7 @@ ul.artworks li:hover .caption {
   left: 0;
   display: none;
   text-align: center;
-  padding: 50px 20px 170px 20px;
+  padding: 10px 20px 100px 20px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

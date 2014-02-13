@@ -27,6 +27,7 @@ app.configure ->
   app.use express.static(path.join(__dirname, "public"))
 app.configure "development", ->
   app.use express.errorHandler()
+app.locals._ = _
 
 # Nap
 nap

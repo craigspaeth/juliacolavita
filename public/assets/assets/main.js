@@ -71,7 +71,7 @@
       opacity: 1
     });
     $("#portfolio").hide().delay(800).fadeIn(2000, "easeOutExpo");
-    return $('img').error(function() {
+    return $('.artworks img').error(function() {
       return $(this).parent().hide();
     });
   });

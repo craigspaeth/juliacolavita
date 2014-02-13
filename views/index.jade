@@ -1,4 +1,5 @@
 mixin portfolio-page(collection)
+  collection = _.sortBy(collection, function(artwork) { new Date(artwork.created_at) })
   .portfolio_page
     ul.artworks.clearfix
       for artwork in collection.reverse()
