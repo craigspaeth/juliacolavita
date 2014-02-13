@@ -138,7 +138,7 @@ body a {
 header {
   text-align: center;
   position: relative;
-  margin-top: 25px;
+  margin-top: 28px;
 }
 header nav {
   margin: auto;
@@ -301,10 +301,10 @@ ul.artworks li:hover .caption {
   z-index: -1;
 }
 #container.wide .landscape {
-  width: 388px !important;
+  width: 380px !important;
 }
 #container.small .landscape {
-  width: 390px !important;
+  width: 380px !important;
 }
 #container {
   opacity: 0;
