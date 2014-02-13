@@ -314,17 +314,13 @@ ul.artworks li:hover .caption {
   margin: auto;
   overflow: hidden;
 }
-#container.small ul.artworks li {
+#container ul.artworks li {
   width: 180px;
-  margin: 0 10px 60px 10px;
+  margin: 0 10px 30px 10px;
 }
 #container.wide {
   width: 1200px;
   margin: auto;
-}
-#container.wide ul.artworks li {
-  width: 180px;
-  margin: 0 10px 60px 10px;
 }
 #container.wide #portfolio .portfolio_page {
   width: 1200px;
