@@ -105,6 +105,7 @@ a img {
   clear: both;
 }
 body {
+  -webkit-font-smoothing: antialiased;
   font-family: Lucida Grande, Lucida Sans Unicode, sans-serif;
   font-size: 13px;
   color: #000;
@@ -137,6 +138,7 @@ body a {
 header {
   text-align: center;
   position: relative;
+  margin-top: 15px;
 }
 header nav {
   margin: auto;
@@ -173,7 +175,7 @@ header nav .pdf {
 }
 #portfolio_nav_container nav {
   text-align: center;
-  padding: 50px 0 100px 0;
+  padding: 40px 0;
 }
 #portfolio_nav_container nav a {
   font-family: 'BigNoodle';
@@ -212,16 +214,15 @@ header nav .pdf {
 }
 ul.artworks li {
   list-style: none;
-  float: left;
-  height: 430px;
   position: relative;
+  display: inline-block;
+  padding-bottom: 40px;
+  vertical-align: bottom;
 }
 ul.artworks img {
   display: block;
   max-width: 100%;
   max-height: 380px;
-  position: absolute;
-  bottom: 40px;
   cursor: -moz-zoom-in;
   cursor: -webkit-zoom-in;
 }
@@ -314,22 +315,16 @@ ul.artworks li:hover .caption {
   overflow: hidden;
 }
 #container.small ul.artworks li {
-  width: 186px;
-  margin-right: 18px;
-}
-#container.small ul.artworks li:nth-child(4n) {
-  margin-right: 0px;
+  width: 180px;
+  margin: 0 10px 60px 10px;
 }
 #container.wide {
   width: 1200px;
   margin: auto;
 }
 #container.wide ul.artworks li {
-  width: 185px;
-  margin: 0 18px 60px 0;
-}
-#container.wide ul.artworks li:nth-child(6n) {
-  margin-right: 0px;
+  width: 180px;
+  margin: 0 10px 60px 10px;
 }
 #container.wide #portfolio .portfolio_page {
   width: 1200px;

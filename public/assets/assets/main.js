@@ -72,7 +72,7 @@
     });
     $("#portfolio").hide().delay(800).fadeIn(2000, "easeOutExpo");
     return $('.artworks img').error(function() {
-      return $(this).parent().hide();
+      return $(this).parent().remove();
     });
   });
 

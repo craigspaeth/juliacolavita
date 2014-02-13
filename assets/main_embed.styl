@@ -11,6 +11,7 @@ global-reset()
 
 // Main body
 body
+  font-smoothing antialiased
   font-family Lucida Grande, Lucida Sans Unicode, sans-serif
   font-size 13px
   color black
@@ -37,6 +38,7 @@ body
 header
   text-align center
   position relative
+  margin-top 15px
   nav
     margin auto
     display inline-block
@@ -68,7 +70,7 @@ header
 #portfolio_nav_container
   nav
     text-align center
-    padding 50px 0 100px 0
+    padding 40px 0
     a
       font-family 'BigNoodle'
       text-transform uppercase
@@ -100,15 +102,14 @@ header
 ul.artworks
   li
     list-style none
-    float left
-    height 430px
     position relative
+    display inline-block
+    padding-bottom 40px
+    vertical-align bottom
   img
     display block
     max-width 100%
     max-height 380px
-    position absolute
-    bottom 40px
     cursor -moz-zoom-in
     cursor -webkit-zoom-in
   .caption
@@ -189,20 +190,16 @@ ul.artworks
 
 #container.small
   ul.artworks li
-    width 186px
-    margin-right 18px
-    &:nth-child(4n)
-      margin-right 0px
+    width 180px
+    margin 0 10px 60px 10px
 
 // Wide
 #container.wide
   width 1200px
   margin auto
   ul.artworks li
-    width 185px
-    margin 0 18px 60px 0
-    &:nth-child(6n)
-      margin-right 0px
+    width 180px
+    margin 0 10px 60px 10px
 
 #container.wide #portfolio .portfolio_page
   width 1200px

@@ -62,4 +62,4 @@ $ ->
   $("#portfolio").hide().delay(800).fadeIn(2000, "easeOutExpo")
 
   # Hide missing images
-  $('.artworks img').error -> $(@).parent().hide()
+  $('.artworks img').error -> $(@).parent().remove()
