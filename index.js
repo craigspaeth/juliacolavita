@@ -4,6 +4,7 @@ let path = require("path");
 let app = express();
 let _ = require('underscore');
 let fs = require('fs');
+let babelify = require('babelify');
 let PORT = process.env.PORT || 3000;
 
 // Map artworks into their series
@@ -24,17 +25,18 @@ app.use(express.static(path.join(__dirname, "public")));
 app.locals._ = _;
 
 // Compile middleware
-app.use require("stylus").middleware({
+app.use(require("stylus").middleware({
   src: __dirname + "/assets",
   dest: __dirname + "/public"
-})
-app.use require("browserify-dev-middleware")({
+}))
+app.use(require("browserify-dev-middleware")({
   src: __dirname + "/assets",
+  transforms: [babelify],
   insertGlobals: true
-})
+}))
 
 // Routes
-app.get("/", (req, res) => res.render('index', { collections: collections }));
+app.get("*", (req, res) => res.render('index', { collections: collections }));
 
 // Init
 app.listen(PORT, () => {

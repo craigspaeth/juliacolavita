@@ -1,6 +1,29 @@
+var page = require('page');
+
+page('/artwork/:id', function(ctx) {
+  $el = $(`[data-id='${ctx.params.id}'] img`);
+  console.log(`[data-id='${ctx.params.id}']`)
+  $("#lightbox img").attr("src", $el.data("large_src"));
+  $("#lightbox .caption").html($el.siblings(".caption").html()).hide();
+  $("#lightbox").fadeIn(function() {
+    $("#lightbox .caption").fadeIn().css({
+      bottom: -$("#lightbox .caption").outerHeight()
+    });
+    $("html").css({"overflow-y": "hidden"});
+  });
+});
+
+page('/', () => {
+  $("#lightbox").fadeOut();
+  return $("html").css({"overflow-y": "scroll"});
+});
+
 $(function() {
-  let layoutWidth = 1200;
-  let index = 0;
+  var layoutWidth = 1200;
+  var index = 0;
+
+  // Start router
+  page.start();
 
   // Setup pages and nav
   $(".portfolio_page:gt(0)").height("1px");
@@ -31,22 +54,16 @@ $(function() {
 
   // Clicking on an artwork image opens it in the lightbox
   $(".portfolio_page ul li img").click(function() {
-    $("#lightbox img").attr("src", $(this).data("large_src"));
-    $("#lightbox .caption").html($(this).siblings(".caption").html()).hide();
-    return $("#lightbox").fadeIn(function() {
-      $("#lightbox .caption").fadeIn().css({bottom: -$("#lightbox .caption").outerHeight()});
-      return $("html").css({"overflow-y": "hidden"});
-    });
+    page('/artwork/' + $(this).parent().attr('data-id'));
   });
 
   // Close lightbox
   $("#close_lightbox, #lightbox").click(function() {
-    $("#lightbox").fadeOut();
-    return $("html").css({"overflow-y": "scroll"});
+    page('/');
   });
 
   // Set layout depending on screen size, increments of 800px to 1200px
-  let setLayout = function() {
+  var setLayout = function() {
     if ($(window).width() >= 1200) {
       $("#container").addClass("wide").removeClass("small");
       $("#portfolio_page_container").width($(".portfolio_page").length * 1300);

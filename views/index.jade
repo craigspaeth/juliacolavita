@@ -1,15 +1,20 @@
 mixin portfolio-page(collection)
-  collection = _.sortBy(collection, function(artwork) { new Date(artwork.created_at) })
+  - collection = _.sortBy(collection, function(artwork) { new Date(artwork.created_at) })
   .portfolio_page
     ul.artworks.clearfix
       for artwork in collection.reverse()
         if artwork.images.length > 0 && artwork.images[0].image_url
-          landscape = artwork.images[0].aspect_ratio > 1.5
+          - landscape = artwork.images[0].aspect_ratio > 1.5
           if landscape
             li.landscape_placeholder
-          li( class=landscape ? 'landscape' : '' )
-            img(src=artwork.images[0].image_url.replace(':version', 'large'),
-                data-large_src=artwork.images[0].image_url.replace(':version', 'larger'))
+          li(
+            data-id=artwork.id
+            class=landscape ? 'landscape' : ''
+          )
+            img(
+              src=artwork.images[0].image_url.replace(':version', 'large'),
+              data-large_src=artwork.images[0].image_url.replace(':version', 'larger')
+            )
             .caption
               = artwork.title.trim()
               | ,&nbsp;
@@ -17,7 +22,7 @@ mixin portfolio-page(collection)
               br
               = artwork.medium
               br
-              = artwork.dimensions[artwork.metric]
+              = artwork.dimensions['in'] || artwork.dimensions['cm']
 
 html
   head
@@ -27,7 +32,7 @@ html
     meta(name='description', content='Julia Colavita (b. 1983) is a painter and sculptor based in Brooklyn, New York.')
     meta(name='author', content='Julia Colavita')
     meta(name='viewport', content='width=device-width,initial-scale=1')
-    link(rel="stylesheet" type="text/css" href="main.css")
+    link(rel="stylesheet" type="text/css" href="/main.css")
   body
     #container
       header
@@ -64,10 +69,10 @@ html
             .img_container
               img(src='large_img')
               .caption
-            button#close_lightbox X
+            button#close_lightbox ✕
       footer
 
     #scripts
       script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
       script(src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js')
-      script(src='main.js')
+      script(src='/main.js')
