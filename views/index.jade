@@ -55,16 +55,12 @@ html
               a( href='#' ) Painting
               a( href='#' ) Works on Paper
               a( href='#' ) Mixed Media
-              a(href='para-projections') Para-Projections
           #portfolio_page_container.clearfix
             mixin portfolio-page(collections['Sculpture'])
             mixin portfolio-page(collections['Installation'])
             mixin portfolio-page(collections['Painting'])
-            mixin portfolio-page(collections['Works on Paper'])
+            mixin portfolio-page(collections['Drawing, Collage or other Work on Paper'])
             mixin portfolio-page(collections['Mixed Media'])
-            .portfolio_page
-              .para-projections
-                iframe(src='http://player.vimeo.com/video/44775766', color='ffffff', width='800', height='448', frameborder='0', webkitallowfullscreen='webkitAllowFullScreen', mozallowfullscreen='mozallowfullscreen', allowfullscreen='allowFullScreen')
           #lightbox
             .img_container
               img(src='large_img')
