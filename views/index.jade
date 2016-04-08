@@ -2,7 +2,7 @@ mixin portfolio-page(collection)
   - collection = _.sortBy(collection, function(artwork) { new Date(artwork.created_at) })
   .portfolio_page
     ul.artworks.clearfix
-      for artwork in collection.reverse()
+      for artwork in _.sortBy(collection, function(a) { return a.title }).reverse()
         - image = artwork.images && artwork.images.length && artwork.images.filter(function(image) { return image.is_default == true })[0]
         if image && image.image_url
           - landscape = image.aspect_ratio > 1.5
@@ -15,6 +15,7 @@ mixin portfolio-page(collection)
             img(
               src=image.image_url.replace(':version', 'large'),
               data-large_src=image.image_url.replace(':version', 'larger')
+              data-orientation=image.aspect_ratio > 1 ? 'landscape' : 'portrait'
             )
             .caption
               = artwork.title.trim()

@@ -225,9 +225,9 @@ ul.artworks li {
 ul.artworks img {
   display: block;
   max-width: 100%;
-  max-height: 380px;
   cursor: -moz-zoom-in;
   cursor: -webkit-zoom-in;
+  max-height: 500px;
 }
 ul.artworks .caption {
   display: block;
@@ -256,6 +256,7 @@ ul.artworks li:hover .caption {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  overflow-y: scroll;
 }
 #lightbox .img_container {
   display: inline-block;
@@ -272,12 +273,13 @@ ul.artworks li:hover .caption {
   line-height: 18px;
 }
 #lightbox img {
-  max-width: 100%;
-  max-height: 100%;
   margin: auto;
   -webkit-box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
   box-shadow: 0px 3px 5px rgba(0,0,0,0.3);
   display: block;
+}
+#lightbox img[data-orientation='landscape'] {
+  max-height: 88vh;
 }
 #close_lightbox {
   background: #fff;
@@ -288,13 +290,15 @@ ul.artworks li:hover .caption {
   right: 10px;
   top: 8px;
   color: #ccc;
-  font-size: 20px;
+  font-size: 32px;
+  font-weight: bold;
   -webkit-transition: color 0.5s;
   -moz-transition: color 0.5s;
   -o-transition: color 0.5s;
   -ms-transition: color 0.5s;
   transition: color 0.5s;
   cursor: pointer;
+  outline: none;
 }
 #close_lightbox:hover {
   color: #000;
@@ -333,6 +337,8 @@ ul.artworks li:hover .caption {
   margin: 0 auto 50px auto;
 }
 .gem-drug * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 .gem-drug p {
@@ -343,8 +349,9 @@ ul.artworks li:hover .caption {
 .gem-drug-body {
   width: 61%;
 }
-.gem-drug-body, .gem-drug-details {
-  display:  inline-block;
+.gem-drug-body,
+.gem-drug-details {
+  display: inline-block;
   vertical-align: top;
   margin-top: 30px;
 }

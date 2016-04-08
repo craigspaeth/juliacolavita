@@ -8,7 +8,7 @@
   "version": "0.0.1-28",
   "private": true,
   "scripts": {
-    "start": "forever node_modules/.bin/babel-node --presets es2015 index.js",
+    "start": "NODE_ENV=development forever node_modules/.bin/babel-node --presets es2015 index.js",
     "deploy": "git add . && git commit -a -m 'deploying'; git push origin master; git push https://git.heroku.com/juliacolavita.git"
   },
   "engines": {
