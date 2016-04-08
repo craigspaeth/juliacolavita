@@ -3,8 +3,9 @@ mixin portfolio-page(collection)
   .portfolio_page
     ul.artworks.clearfix
       for artwork in collection.reverse()
-        if artwork.images.length > 0 && artwork.images[0].image_url
-          - landscape = artwork.images[0].aspect_ratio > 1.5
+        - image = artwork.images && artwork.images.length && artwork.images.filter(function(image) { return image.is_default == true })[0]
+        if image && image.image_url
+          - landscape = image.aspect_ratio > 1.5
           if landscape
             li.landscape_placeholder
           li(
@@ -12,8 +13,8 @@ mixin portfolio-page(collection)
             class=landscape ? 'landscape' : ''
           )
             img(
-              src=artwork.images[0].image_url.replace(':version', 'large'),
-              data-large_src=artwork.images[0].image_url.replace(':version', 'larger')
+              src=image.image_url.replace(':version', 'large'),
+              data-large_src=image.image_url.replace(':version', 'larger')
             )
             .caption
               = artwork.title.trim()
