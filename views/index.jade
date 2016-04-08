@@ -55,12 +55,23 @@ html
               a( href='#' ) Painting
               a( href='#' ) Works on Paper
               a( href='#' ) Mixed Media
+              a( href='gem-drug' ) Gem Drug
           #portfolio_page_container.clearfix
             mixin portfolio-page(collections['Sculpture'])
             mixin portfolio-page(collections['Installation'])
             mixin portfolio-page(collections['Painting'])
             mixin portfolio-page(collections['Drawing, Collage or other Work on Paper'])
             mixin portfolio-page(collections['Mixed Media'])
+            .portfolio_page
+              .gem-drug
+                iframe(src='https://player.vimeo.com/video/150549691?color=ffffff&title=0&byline=0&portrait=0', width='800', height='448', frameborder='0', webkitallowfullscreen='', mozallowfullscreen='', allowfullscreen='')
+                .gem-drug-body
+                  h4 Gem Drug
+                  p The 6 ½ minute psychedelic journey of <em>GEM DRUG</em> probes the cultural significance of gems and crystals as luxury items, spiritual objects, and commercial fetishes. Acting as modern day Robin Hoods, the main characters, played by Adam and Julia, set forth on an intense journey to 'return the gems back to the inside’'. Using their own bodies as a metaphor for the Earth, they 'eat them, drink them, and absorb them into their pores’ in a ritual of playful carnality.
+                .gem-drug-details
+                  p Written & performed by:<br>Adam Chad Brody & Julia Colavita
+                  p First screened at WARM Sao Paolo, March 2015.
+                  p Also screened in New York City at NEW RELEASE (June 2015) and Garis & Hahn Summer Window Series (August 2015)
           #lightbox
             .img_container
               img(src='large_img')
