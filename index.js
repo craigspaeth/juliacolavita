@@ -10,13 +10,12 @@ let PORT = process.env.PORT || 3000
 // Map artworks into their series
 let artworks = JSON.parse(fs.readFileSync('./assets/artworks.json'))
 let collections = {}
-for (let i = 0, artwork i < artworks.length i++) {
-  artwork = artworks[i]
-  if (!((artwork.category != null) && artwork.category !== '')) { continue }
+artworks.map((artwork) => {
+  if (!((artwork.category != null) && artwork.category !== '')) return
   let name = artwork.category
-  if (!(collections[name] != null)) { collections[name] = [] }
+  if (!(collections[name] != null)) collections[name] = []
   collections[name].push(artwork)
-}
+})
 
 // Config
 app.set("views", __dirname + "/views")
