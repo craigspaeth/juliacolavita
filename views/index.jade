@@ -24,7 +24,7 @@ mixin portfolio-page(collection)
               br
               = artwork.medium
               br
-              = artwork.dimensions['in'] || artwork.dimensions['cm']
+              | #{artwork.height} x #{artwork.width} #{artwork.metric}
 
 html
   head
