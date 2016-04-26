@@ -8,14 +8,22 @@ let babelify = require('babelify')
 let PORT = process.env.PORT || 3000
 
 // Map artworks into their series
-let artworks = JSON.parse(fs.readFileSync('./assets/artworks.json'))
 let collections = {}
-artworks.forEach((artwork) => {
-  if (!((artwork.category != null) && artwork.category !== '')) return
-  let name = artwork.category
-  if (!(collections[name] != null)) collections[name] = []
-  collections[name].push(artwork)
-})
+const loadArtworks = (callback) => {
+  fs.readFile('./assets/artworks.json', (err, works) => {
+    if (err) return callback(err)
+    JSON.parse(works).forEach((artwork) => {
+      if (!((artwork.category != null) && artwork.category !== '')) return
+      let name = artwork.category
+      if (!(collections[name] != null)) collections[name] = []
+      collections[name].push(_.pick(artwork,
+        'created_at','images','images','images','id','title','date','medium',
+        'height','width','metric'
+      ))
+    })
+    callback()
+  })
+}
 
 // Config
 app.set("views", __dirname + "/views")
@@ -42,4 +50,5 @@ app.use(express.static(path.join(__dirname, "public")))
 // Init
 app.listen(PORT, () => {
   console.log("Express server listening on port " + PORT)
+  loadArtworks(() => console.log('Loaded works'))
 })
