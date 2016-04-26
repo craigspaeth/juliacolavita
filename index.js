@@ -10,7 +10,7 @@ let PORT = process.env.PORT || 3000
 // Map artworks into their series
 let collections = {}
 const loadArtworks = (callback) => {
-  fs.readFile('./assets/artworks.json', (err, works) => {
+  fs.readFile('./artworks.json', (err, works) => {
     if (err) return callback(err)
     JSON.parse(works).forEach((artwork) => {
       if (!((artwork.category != null) && artwork.category !== '')) return
