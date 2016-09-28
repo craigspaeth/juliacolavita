@@ -1,24 +1,31 @@
-let express = require("express")
-let http = require("http")
-let path = require("path")
-let app = express()
-let _ = require('underscore')
-let fs = require('fs')
-let babelify = require('babelify')
-let PORT = process.env.PORT || 3000
+const express = require("express")
+const http = require("http")
+const path = require("path")
+const app = express()
+const _ = require('underscore')
+const fs = require('fs')
+const babelify = require('babelify')
+const PORT = process.env.PORT || 3000
 
 // Map artworks into their series
-let collections = {}
+const collections = {}
 const loadArtworks = (callback) => {
   fs.readFile('./artworks.json', (err, works) => {
     if (err) return callback(err)
     JSON.parse(works).forEach((artwork) => {
       if (!((artwork.category != null) && artwork.category !== '')) return
-      let name = artwork.category
+      const name = artwork.category
       if (!(collections[name] != null)) collections[name] = []
       collections[name].push(_.pick(artwork,
-        'created_at','images','images','images','id','title','date','medium',
-        'height','width','metric'
+        'created_at',
+        'images',
+        'id',
+        'title',
+        'date',
+        'medium',
+        'height',
+        'width',
+        'metric'
       ))
     })
     callback()
@@ -42,7 +49,7 @@ app.use(require("browserify-dev-middleware")({
 }))
 
 // Routes
-let home = (req, res) => res.render('index', { collections: collections })
+const home = (req, res) => res.render('index', { collections: collections })
 app.get("/", home)
 app.get("/artwork/:id", home)
 app.use(express.static(path.join(__dirname, "public")))

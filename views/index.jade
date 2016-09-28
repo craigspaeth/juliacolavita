@@ -26,6 +26,7 @@ mixin portfolio-page(collection)
               br
               | #{artwork.height} x #{artwork.width} #{artwork.metric}
 
+- console.log(collections)
 html
   head
     meta(charset='utf-8')
@@ -53,20 +54,20 @@ html
           #portfolio_nav_container
             nav.clearfix
               a( href='#' ) Sculpture
-              a( href='#' ) Slide Projections
+              a( href='#' ) Slides
               a( href='#' ) Works on Paper
-              a( href='gem-drug' ) Gem Drug
+              a( href='video-section' ) Video
           #portfolio_page_container.clearfix
             mixin portfolio-page(collections['Sculpture'])
             mixin portfolio-page(collections['Installation'])
             mixin portfolio-page(collections['Drawing, Collage or other Work on Paper'])
             .portfolio_page
-              .gem-drug
+              .video-section
                 iframe(src='https://player.vimeo.com/video/150549691?color=ffffff&title=0&byline=0&portrait=0', width='800', height='448', frameborder='0', webkitallowfullscreen='', mozallowfullscreen='', allowfullscreen='')
-                .gem-drug-body
+                .video-section-body
                   h4 Gem Drug
                   p The 6 ½ minute psychedelic journey of <em>GEM DRUG</em> probes the cultural significance of gems and crystals as luxury items, spiritual objects, and commercial fetishes. Acting as modern day Robin Hoods, the main characters, played by Adam and Julia, set forth on an intense journey to 'return the gems back to the inside’'. Using their own bodies as a metaphor for the Earth, they 'eat them, drink them, and absorb them into their pores’ in a ritual of playful carnality.
-                .gem-drug-details
+                .video-section-details
                   p Written & performed by:<br>Adam Chad Brody & Julia Colavita
                   p First screened at WARM Sao Paolo, March 2015.
                   p Also screened in New York City at NEW RELEASE (June 2015) and Garis & Hahn Summer Window Series (August 2015)

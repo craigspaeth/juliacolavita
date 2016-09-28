@@ -331,38 +331,38 @@ ul.artworks li:hover .caption {
 #container.wide #portfolio .portfolio_page {
   width: 1200px;
 }
-.gem-drug {
+.video-section {
   width: 800px;
   margin: 0 auto 50px auto;
 }
-.gem-drug * {
+.video-section * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.gem-drug p {
+.video-section p {
   line-height: 22px;
   font-size: 14px;
   margin-bottom: 22px;
 }
-.gem-drug-body {
+.video-section-body {
   width: 61%;
 }
-.gem-drug-body,
-.gem-drug-details {
+.video-section-body,
+.video-section-details {
   display: inline-block;
   vertical-align: top;
   margin-top: 30px;
 }
-.gem-drug-details {
+.video-section-details {
   padding-left: 30px;
   width: 39%;
   color: #555;
 }
-.gem-drug-details p {
+.video-section-details p {
   font-size: 12px;
 }
-.gem-drug-body h4 {
+.video-section-body h4 {
   text-transform: uppercase;
   font-weight: bold;
   margin-bottom: 8px;
