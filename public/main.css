@@ -284,7 +284,6 @@ ul.artworks li:hover .caption {
 #close_lightbox {
   background: #fff;
   border: 0;
-  -webkit-border-radius: 2px;
   border-radius: 2px;
   position: absolute;
   right: 10px;
