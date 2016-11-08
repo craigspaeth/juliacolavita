@@ -5,30 +5,38 @@ const app = express()
 const _ = require('underscore')
 const fs = require('fs')
 const babelify = require('babelify')
+const request = require('superagent')
 const PORT = process.env.PORT || 3000
+
+const { ACCESS_TOKEN, API_URL } = process.env
 
 // Map artworks into their series
 const collections = {}
-const loadArtworks = (callback) => {
-  fs.readFile('./artworks.json', (err, works) => {
-    if (err) return callback(err)
-    JSON.parse(works).forEach((artwork) => {
-      if (!((artwork.category != null) && artwork.category !== '')) return
-      const name = artwork.category
-      if (!(collections[name] != null)) collections[name] = []
-      collections[name].push(_.pick(artwork,
-        'created_at',
-        'images',
-        'id',
-        'title',
-        'date',
-        'medium',
-        'height',
-        'width',
-        'metric'
-      ))
-    })
-    callback()
+
+const fetch = async (endpoint) => {
+  const req = await request
+    .get(`${API_URL}/api/v1${endpoint}`)
+    .set('X-Access-Token', ACCESS_TOKEN)
+    .query({ size: 100 })
+  return req.body
+}
+
+const loadArtworks = async () => {
+  const shows = await fetch('/partner/julia-colavita/shows')
+  const artworkGroups = await Promise.all(shows.map((show) =>
+    fetch(`/partner/julia-colavita/show/${show.id}/artworks`)))
+  shows.forEach((show, i) => {
+    collections[show.name] = artworkGroups[i].map((a) => _.pick(a,
+      'created_at',
+      'images',
+      'id',
+      'title',
+      'date',
+      'medium',
+      'height',
+      'width',
+      'metric'
+    ))
   })
 }
 
@@ -57,5 +65,5 @@ app.use(express.static(path.join(__dirname, "public")))
 // Init
 app.listen(PORT, () => {
   console.log("Express server listening on port " + PORT)
-  loadArtworks(() => console.log('Loaded works'))
+  loadArtworks().then(() => console.log('Loaded works'))
 })

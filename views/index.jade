@@ -26,7 +26,6 @@ mixin portfolio-page(collection)
               br
               | #{artwork.height} x #{artwork.width} #{artwork.metric}
 
-- console.log(collections)
 html
   head
     meta(charset='utf-8')
@@ -53,14 +52,12 @@ html
         #portfolio
           #portfolio_nav_container
             nav.clearfix
-              a( href='#' ) Sculpture
-              a( href='#' ) Slides
-              a( href='#' ) Works on Paper
+              for collection, name in collections
+                a( href='#' )= name
               a( href='video-section' ) Video
           #portfolio_page_container.clearfix
-            mixin portfolio-page(collections['Sculpture'])
-            mixin portfolio-page(collections['Installation'])
-            mixin portfolio-page(collections['Drawing, Collage or other Work on Paper'])
+            for collection, name in collections
+              mixin portfolio-page(collection)
             .portfolio_page
               .video-section
                 iframe(src='https://player.vimeo.com/video/150549691?color=ffffff&title=0&byline=0&portrait=0', width='800', height='448', frameborder='0', webkitallowfullscreen='', mozallowfullscreen='', allowfullscreen='')

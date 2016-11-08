@@ -8,26 +8,34 @@
   "version": "0.0.1-28",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=development forever node_modules/.bin/babel-node --presets es2015 index.js",
+    "server": "node -r dotenv/config -r babel-core/register index.js",
+    "start": "forever npm run server",
     "deploy": "git add . && git commit -a -m 'deploying'; git push origin master; git push https://git.heroku.com/juliacolavita.git"
   },
   "engines": {
-    "node": "5.x",
+    "node": "6.x",
     "npm": "3.x"
   },
+  "babel":
+  {
+    "presets": ["es2017"]
+  },
   "dependencies": {
+    "artsy-xapp": "^1.0.4",
     "babel": "^6.3.26",
-    "babel-cli": "^6.4.5",
-    "babel-preset-es2015": "^6.3.13",
+    "babel-core": "^6.18.2",
+    "babel-preset-es2017": "^6.16.0",
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "browserify-dev-middleware": "^1.0.0",
+    "dotenv": "^2.0.0",
     "express": "*",
     "forever": "^0.15.1",
     "jade": "^1.11.0",
     "nib": "*",
     "page": "^1.6.4",
     "stylus": "*",
+    "superagent": "^2.3.0",
     "underscore": "*"
   }
 }
