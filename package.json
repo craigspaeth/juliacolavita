@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "server": "node -r dotenv/config -r babel-core/register index.js",
-    "start": "forever npm run server",
+    "start": "npm run server",
     "deploy": "git add . && git commit -a -m 'deploying'; git push origin master; git push https://git.heroku.com/juliacolavita.git"
   },
   "engines": {
