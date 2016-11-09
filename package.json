@@ -16,9 +16,13 @@
     "node": "6.x",
     "npm": "3.x"
   },
-  "babel":
-  {
-    "presets": ["es2017"]
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "babel": {
+    "presets": [
+      "es2017"
+    ]
   },
   "dependencies": {
     "artsy-xapp": "^1.0.4",
@@ -32,6 +36,7 @@
     "express": "*",
     "forever": "^0.15.1",
     "jade": "^1.11.0",
+    "lodash": "^4.16.6",
     "nib": "*",
     "page": "^1.6.4",
     "stylus": "*",

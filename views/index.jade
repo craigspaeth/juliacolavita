@@ -1,3 +1,5 @@
+- console.log(_.keys(collections))
+- order = ['insulation series', 'new flesh', 'incorruptible flesh', 'skins', 'skins (studies)', 'paintings', 'slides']
 mixin portfolio-page(collection)
   - collection = _.sortBy(collection, function(artwork) { new Date(artwork.created_at) })
   .portfolio_page
@@ -52,12 +54,12 @@ html
         #portfolio
           #portfolio_nav_container
             nav.clearfix
-              for collection, name in collections
-                a( href='#' )= name
+              for name in order
+                a( href='#' )= _.capitalize(name)
               a( href='video-section' ) Video
           #portfolio_page_container.clearfix
-            for collection, name in collections
-              mixin portfolio-page(collection)
+            for name in order
+              mixin portfolio-page(collections[name])
             .portfolio_page
               .video-section
                 iframe(src='https://player.vimeo.com/video/150549691?color=ffffff&title=0&byline=0&portrait=0', width='800', height='448', frameborder='0', webkitallowfullscreen='', mozallowfullscreen='', allowfullscreen='')

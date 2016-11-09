@@ -2,13 +2,12 @@ const express = require("express")
 const http = require("http")
 const path = require("path")
 const app = express()
-const _ = require('underscore')
+const _ = require('lodash')
 const fs = require('fs')
 const babelify = require('babelify')
 const request = require('superagent')
-const PORT = process.env.PORT || 3000
 
-const { ACCESS_TOKEN, API_URL } = process.env
+const { ACCESS_TOKEN, API_URL, PORT } = process.env
 
 // Map artworks into their series
 const collections = {}
@@ -26,7 +25,7 @@ const loadArtworks = async () => {
   const artworkGroups = await Promise.all(shows.map((show) =>
     fetch(`/partner/julia-colavita/show/${show.id}/artworks`)))
   shows.forEach((show, i) => {
-    collections[show.name] = artworkGroups[i].map((a) => _.pick(a,
+    collections[show.name.toLowerCase().trim()] = artworkGroups[i].map((a) => _.pick(a,
       'created_at',
       'images',
       'id',
@@ -38,6 +37,8 @@ const loadArtworks = async () => {
       'metric'
     ))
   })
+  const artworks = await fetch('/partner/direct-julia/artworks')
+  collections.slides = artworks.filter((a) => a.artist.id === 'julia-colavita')
 }
 
 // Config
@@ -57,7 +58,7 @@ app.use(require("browserify-dev-middleware")({
 }))
 
 // Routes
-const home = (req, res) => res.render('index', { collections: collections })
+const home = (req, res) => res.render('index', { collections })
 app.get("/", home)
 app.get("/artwork/:id", home)
 app.use(express.static(path.join(__dirname, "public")))
