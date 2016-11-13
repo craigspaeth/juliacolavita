@@ -39,6 +39,7 @@
     "lodash": "^4.16.6",
     "nib": "*",
     "page": "^1.6.4",
+    "promised-mongo": "^1.2.0",
     "stylus": "*",
     "superagent": "^2.3.0",
     "underscore": "*"
