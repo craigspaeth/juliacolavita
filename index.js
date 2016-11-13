@@ -6,10 +6,21 @@ const _ = require('lodash')
 const fs = require('fs')
 const babelify = require('babelify')
 const request = require('superagent')
-const mongojs = require('promised-mongo')
+const MongoClient = require('mongodb').MongoClient
 
 const { ACCESS_TOKEN, API_URL, PORT, MONGODB_URI } = process.env
-const db = mongojs(MONGODB_URI, ['works'])
+let works
+
+const connect = () => {
+  if (works) return Promise.resolve()
+  return new Promise((resolve, reject) => {
+    MongoClient.connect(MONGODB_URI, (err, db) => {
+      if (err) return reject(err)
+      works = db.collection('works')
+      resolve()
+    })
+  })
+}
 
 const fetch = async (endpoint) => {
   const req = await request
@@ -20,7 +31,7 @@ const fetch = async (endpoint) => {
 }
 
 const downloadWorks = async () => {
-  const works = {}
+  const worksData = {}
   const shows = await fetch('/partner/julia-colavita/shows')
   const artworkGroups = await Promise.all(shows.map((show) =>
     fetch(`/partner/julia-colavita/show/${show.id}/artworks`)))
@@ -36,12 +47,12 @@ const downloadWorks = async () => {
       'width',
       'metric'
     ))
-    works[show.name.toLowerCase().trim()] = data
+    worksData[show.name.toLowerCase().trim()] = data
   })
   const artworks = await fetch('/partner/direct-julia/artworks')
-  works.slides = artworks.filter((a) => a.artist.id === 'julia-colavita')
-  await db.works.drop()
-  await db.works.save(works)
+  worksData.slides = artworks.filter((a) => a.artist.id === 'julia-colavita')
+  await works.remove()
+  await works.save(worksData)
 }
 
 // Config
@@ -62,8 +73,9 @@ app.use(require("browserify-dev-middleware")({
 
 // Routes
 const home = async (req, res) => {
-  const works = await db.works.findOne()
-  res.render('index', { collections: works })
+  await connect()
+  const collections = await works.findOne()
+  res.render('index', { collections })
   try { await downloadWorks() }
   catch (e) { console.log(e) }
 }

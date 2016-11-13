@@ -37,6 +37,7 @@
     "forever": "^0.15.1",
     "jade": "^1.11.0",
     "lodash": "^4.16.6",
+    "mongodb": "^2.2.11",
     "nib": "*",
     "page": "^1.6.4",
     "promised-mongo": "^1.2.0",

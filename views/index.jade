@@ -1,4 +1,3 @@
-- console.log(_.keys(collections))
 - order = ['insulation series', 'new flesh', 'incorruptible flesh', 'skins', 'skins (studies)', 'paintings', 'slides']
 mixin portfolio-page(collection)
   - collection = _.sortBy(collection, function(artwork) { new Date(artwork.created_at) })
