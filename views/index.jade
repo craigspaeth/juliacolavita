@@ -58,7 +58,10 @@ html
               a( href='video-section' ) Video
           #portfolio_page_container.clearfix
             for name in order
-              mixin portfolio-page(collections[name])
+              if name === 'paintings'
+                mixin portfolio-page(collections[name].concat(collections['winter stains']))
+              else
+                mixin portfolio-page(collections[name])
             .portfolio_page
               .video-section
                 iframe(src='https://player.vimeo.com/video/150549691?color=ffffff&title=0&byline=0&portrait=0', width='800', height='448', frameborder='0', webkitallowfullscreen='', mozallowfullscreen='', allowfullscreen='')
